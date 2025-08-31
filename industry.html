@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radha Laabs</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8f9fa;
+      --text-dark: #111;
+      --text-gray: #555;
+      --glass-bg: rgba(255, 255, 255, 0.15);
+      --glass-border: rgba(255, 255, 255, 0.25);
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+      --radius: 20px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text-dark);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(8px) saturate(160%);
+      -webkit-backdrop-filter: blur(8px) saturate(160%);
+      background: rgba(255, 255, 255, 0.55);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: var(--shadow);
+      padding: 0.5rem 0;
+    }
+
+    /* Brand container */
+    .brand-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-container img {
+      height: 60px;
+      width: auto;
+      display: block;
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
+
+    .brand-container img:hover {
+      transform: scale(1.15) rotate(2deg);   /* sirf image hover hone par */
+      filter: drop-shadow(0 0 15px rgba(0,255,200,0.6)); 
+    }
+
+    .brand-container span {
+      font-weight: 900;
+      font-size: 1.5rem;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 5rem 1rem 3rem;
+      text-align: center;
+    }
+    .hero h1 {
+      font-weight: 800;
+      font-size: 2.5rem;
+    }
+    .hero p {
+      color: var(--text-gray);
+      font-size: 1.1rem;
+    }
+
+    /* Glass Cards */
+    .card-glass {
+  position: relative;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  backdrop-filter: blur(12px) saturate(180%);
+  overflow: hidden;
+}
+
+/* Upar wali line */
+.card-glass::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 5px;
+  width: 0; /* default hidden */
+  background: #000; /* black line */
+  transition: width 0.4s ease;
+}
+
+.card-glass:hover::before {
+  width: 100%; /* expand from left → right */
+}
+
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      padding: 4rem 1rem;
+    }
+    .cta h2 {
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+
+    .Head {
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="navbar navbar-light container">
+      <div class="brand-container">
+        <img src="Untitled design (1).png" alt="Radha Laabs Logo" />
+        <span>Radha Laabs</span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Explore the Power of Prompts</h1>
+    <p>From marketing to coding, discover how prompts can create impact for every industry.</p>
+  </section>
+
+  <!-- Main Content -->
+  <main class="container pb-5">
+    <div class="row g-4">
+      <!-- Marketing -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card-glass h-100 feature">
+          <h3 class="Head">Marketing</h3>
+          <ul>
+            <li>Ad copy (Facebook, Insta, Google)</li>
+            <li>Creative campaign ideas</li>
+            <li>SEO blogs & content calendar</li>
+          </ul>
+          
+        </div>
+      </div>
+
+      <!-- Blogging -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card-glass h-100 feature">
+          <h3 class="Head">Content & Blogging</h3>
+          <ul>
+            <li>Blogs, YouTube scripts, newsletters</li>
+            <li>Article rewriting & research</li>
+            <li>Idea generation</li>
+          </ul>
+          
+        </div>
+      </div>
+
+      <!-- Coding -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card-glass h-100 feature">
+          <h3 class="Head">Coding</h3>
+          <ul>
+            <li>Generate code (HTML, CSS, Python...)</li>
+            <li>Debugging & optimization</li>
+          </ul>
+      
+        </div>
+      </div>
+
+      <!-- Business -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card-glass h-100 feature">
+          <h3 class="Head">Business & Startups</h3>
+          <ul>
+            <li>Business plans & pitch decks</li>
+            <li>Market research</li>
+          </ul>
+          
+        </div>
+      </div>
+
+      <!-- E-commerce -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card-glass h-100 feature">
+          <h3 class="Head">E-commerce</h3>
+          <ul>
+            <li>Product descriptions</li>
+            <li>Ad creatives for products</li>
+            <li>Email Prompts</li>
+          </ul>
+          
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card-glass h-100 feature">
+          <h3 class="Head">Education</h3>
+          <ul>
+            <li>Notes creation</li>
+            <li>Step-by-step solutions</li>
+            <li>Quizzes & tests</li>
+          </ul>
+          
+        </div>
+      </div>
+
+      <!-- Design -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card-glass h-100 feature">
+          <h3 class="Head">Design & Creative</h3>
+          <ul>
+            <li>Image prompts (AI tools)</li>
+            <li>Video Prompts</li>
+          </ul>
+         
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <h2>Prompts for Every Need</h2>
+    <p>Get ready-made packs or custom services for your business and personal projects.</p>
+  </section>
+
+</body>
+</html>
