@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Radhalaabs</title>
+  <meta name="description" content="PromptBazaar: High-impact AI prompts delivered instantly on WhatsApp. Pay-per-prompt, custom tuning, niche-ready." />
+  <meta name="author" content="Krish J. Vaghasiya" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* -------------------------
+       CONFIG (Change only here)
+       ------------------------- */
+    :root {
+      --WA_NUMBER: "918511762699";
+      --WA_PREMSG: "Hello%20Krish%2C%20I%20Want%20to%20Buy%20Prompts.%20Please%20tell%20me%20the%20Plans.";
+      --bg: #fbfbfb;
+      --card: #ffffff;
+      --ink: #0b0b0b;
+      --muted: #6f6f75;
+      --line: #e7e7e7;
+      --glass: rgba(255,255,255,0.8);
+      --accent: #111111;
+      --accent-gradient: linear-gradient(135deg, #111111 0%, #333333 100%);
+      --whatsapp: #25D366;
+      --radius-lg: 16px;
+      --container: 1100px;
+      --flow: 1.2rem;
+      --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.03);
+      --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.08);
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    /* Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      margin: 0;
+      font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: var(--bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    
+    .container {
+      max-width: var(--container);
+      margin-inline: auto;
+      padding-inline: 1.5rem;
+    }
+
+    /* ====== NAV (Glassmorphism with enhanced effects) ====== */
+  header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%); /* Safari support */
+  background: rgba(255, 255, 255, 0.35);  /* transparent white */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s ease-in-out;
+}
+
+header.scrolled {
+  background: rgba(255, 255, 255, 0.35);  /* thoda opaque jab scroll ho */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+    
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+    }
+    
+    .brand {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+    }
+    
+.logo {
+  width: 80px;              
+  height: 80px;
+  border-radius: 0;          /* agar rounded box nahi chahiye */
+  display: grid;
+  place-items: center;
+  background: transparent;   /* <-- white box hata diya */
+  overflow: visible;         /* pura logo dikhne do */
+  box-shadow: none;          /* shadow bhi hata diya */
+  transition: transform 0.3s ease;
+}
+
+.logo img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.3, 1), 
+              filter 0.6s cubic-bezier(0.25, 1, 0.3, 1);
+}
+
+
+.logo:hover img {
+  transform: scale(1.15) rotate(2deg);   /* smoothly zoom hoga */
+  filter: drop-shadow(0 0 15px rgba(0,255,200,0.6)); /* glow bhi smooth */
+}
+
+    
+nav a { margin-left: 1.2rem; 
+    padding: 0.5rem 0.8rem; 
+    border-radius: 10px; 
+    color: var(--muted); 
+    font-weight: 600; 
+    transition: var(--transition); 
+    position: relative; 
+} 
+    
+    nav a::before { 
+        content: ""; 
+        position: absolute; 
+        bottom: 0; 
+        left: 50%; width: 0; 
+        height: 2px; 
+        background: var(--accent); 
+        transition: var(--transition); 
+        transform: translateX(-50%); 
+    } 
+    
+    nav a:hover {
+         color: var(--accent); 
+         background: rgba(0, 0, 0, 0.03); 
+        } 
+        
+    nav a:hover::before 
+    { 
+    width: 70%; 
+}
+
+
+
+
+    /* ====== Hero (Enhanced with VFX particles and animations) ====== */
+    .hero {
+      min-height: 95vh;
+      display: grid;
+      place-items: center;
+      padding-block: 6rem 5rem;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      background: 
+        radial-gradient(800px 250px at 10% 10%, rgba(0,0,0,0.04), transparent 12%),
+        radial-gradient(700px 240px at 95% 80%, rgba(0,0,0,0.03), transparent 14%),
+        linear-gradient(180deg, rgba(255,255,255,1), rgba(250,250,250,1));
+    }
+    
+    /* Particle VFX Background */
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+    
+    .particle {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.03);
+      border-radius: 50%;
+      animation: floatParticle 15s infinite linear;
+    }
+    
+    @keyframes floatParticle {
+      0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-500px) translateX(100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    
+    /* Create multiple particles with different properties */
+    .particle:nth-child(1) {
+      width: 20px;
+      height: 20px;
+      top: 20%;
+      left: 10%;
+      animation-duration: 20s;
+      animation-delay: 0s;
+    }
+    
+    .particle:nth-child(2) {
+      width: 15px;
+      height: 15px;
+      top: 60%;
+      left: 80%;
+      animation-duration: 25s;
+      animation-delay: 5s;
+    }
+    
+    .particle:nth-child(3) {
+      width: 25px;
+      height: 25px;
+      top: 70%;
+      left: 15%;
+      animation-duration: 18s;
+      animation-delay: 2s;
+    }
+    
+    .particle:nth-child(4) {
+      width: 10px;
+      height: 10px;
+      top: 30%;
+      left: 70%;
+      animation-duration: 22s;
+      animation-delay: 7s;
+    }
+    
+    .particle:nth-child(5) {
+      width: 18px;
+      height: 18px;
+      top: 50%;
+      left: 40%;
+      animation-duration: 17s;
+      animation-delay: 3s;
+    }
+    
+    .hero-card {
+      width: 100%;
+      max-width: 980px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(250,250,250,0.95) 100%);
+      border-radius: calc(var(--radius-lg) + 8px);
+      padding: clamp(1.5rem, 2.5vw, 2.5rem);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+    }
+    
+    .hero-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 40px 60px rgba(12,12,12,0.1);
+    }
+    
+    .kicker {
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      font-size: 0.75rem;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+      background: rgba(0, 0, 0, 0.03);
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+    }
+    
+    h1 {
+      font-size: clamp(2rem, 2.5rem + 1.6vw, 3.5rem);
+      margin: 0.75rem 0;
+      line-height: 1.1;
+      color: var(--accent);
+      font-weight: 800;
+    }
+    
+    p.lead {
+      margin: 0;
+      color: var(--muted);
+      max-width: 66ch;
+      font-weight: 500;
+      font-size: 1.1rem;
+    }
+    
+    .cta-row {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: 0.9rem 1.3rem;
+      border-radius: 14px;
+      font-weight: 700;
+      border: none;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      transition: var(--transition);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      font-size: 0.95rem;
+    }
+    
+    .btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: 0.5s;
+    }
+    
+    .btn:hover::before {
+      left: 100%;
+    }
+    
+    .btn.primary {
+      background: var(--accent-gradient);
+      color: white;
+      box-shadow: 0 15px 35px rgba(17,17,17,0.2);
+    }
+    
+    .btn.ghost {
+      background: transparent;
+      color: var(--accent);
+      border: 1px dashed var(--line);
+    }
+    
+    .btn.primary:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 25px 50px rgba(17,17,17,0.25);
+    }
+    
+    .btn.ghost:hover {
+      background: rgba(0, 0, 0, 0.02);
+      border-style: solid;
+    }
+    
+    /* Feature strip with enhanced styling */
+    .feature-strip {
+      display: flex;
+      gap: 1.2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .feature-item {
+      background: linear-gradient(135deg, rgba(255,255,255,0.7), rgba(250,250,250,0.8));
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      padding: 1rem 1.2rem;
+      min-width: 180px;
+      flex: 1;
+      backdrop-filter: blur(5px);
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .feature-item:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .feature-item .title {
+      font-weight: 800;
+      margin-bottom: 0.3rem;
+    }
+    
+    .feature-item .subtitle {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    
+    /* Sheen effect on hero card */
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: -30% -30% auto -30%;
+      height: 140%;
+      transform: rotate(14deg) translateX(-40%);
+      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 30%, rgba(255,255,255,0) 60%);
+      mix-blend-mode: overlay;
+      opacity: 0.06;
+      pointer-events: none;
+      animation: sheen 6.8s linear infinite;
+    }
+    
+    @keyframes sheen {
+      to {
+        transform: rotate(14deg) translateX(60%);
+      }
+    }
+
+    /* ====== FEATURES GRID ====== */
+    .features {
+      padding-block: 5rem 4rem;
+    }
+    
+    .section-title {
+      font-size: clamp(1.5rem, 1.4rem + 1vw, 2rem);
+      margin: 0;
+      font-weight: 800;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 50px;
+      height: 4px;
+      background: var(--accent-gradient);
+      border-radius: 2px;
+    }
+    
+    .section-subtitle {
+      color: var(--muted);
+      margin-top: 1rem;
+      max-width: 70ch;
+      font-weight: 500;
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .feature {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 1.8rem;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-md);
+      transform-origin: center;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .feature::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 0;
+      background: var(--accent-gradient);
+      transition: var(--transition);
+    }
+    
+    .feature:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .feature:hover::before {
+      height: 100%;
+    }
+    
+    .feature .title {
+      font-weight: 800;
+      margin-top: 0.8rem;
+      margin-bottom: 0.6rem;
+      font-size: 1.2rem;
+    }
+    
+    .feature p {
+      margin: 0;
+      color: var(--muted);
+      font-weight: 500;
+      line-height: 1.6;
+    }
+    
+    /* Pricing section enhancements */
+    .pricing {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      align-items: stretch;
+    }
+    
+    @media (max-width: 900px) {
+      .pricing {
+        flex-direction: column;
+      }
+    }
+    
+    .price-card {
+      flex: 1;
+      background: linear-gradient(180deg, #fff, #fafafa);
+      padding: 1.8rem;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition);
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .price-card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--accent-gradient);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: var(--transition);
+    }
+    
+    .price-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .price-card:hover::after {
+      transform: scaleX(1);
+    }
+    
+    .price {
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      margin-top: 0.5rem;
+    }
+    
+    /* ====== Contact Section ====== */
+    .contact {
+      padding-block: 5rem 6rem;
+      background: linear-gradient(180deg, rgba(0,0,0,0.02), transparent);
+      position: relative;
+    }
+    
+    form.card-form {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      box-shadow: var(--shadow-lg);
+      transition: var(--transition);
+    }
+    
+    form.card-form:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 30px 60px rgba(12,12,12,0.1);
+    }
+    
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 1.2rem;
+    }
+    
+    label {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    
+    input, textarea {
+      padding: 0.9rem 1.2rem;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      outline: none;
+      font-size: 1rem;
+      background: transparent;
+      transition: var(--transition);
+      font-family: inherit;
+    }
+    
+    input:focus, textarea:focus {
+      box-shadow: 0 0 0 3px rgba(0,0,0,0.05);
+      border-color: rgba(0,0,0,0.2);
+      transform: translateY(-2px);
+    }
+    
+    /* ====== Footer ====== */
+    footer {
+      padding: 3rem 0;
+      border-top: 1px solid var(--line);
+      margin-top: 2rem;
+      background: transparent;
+    }
+    
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      gap: 1.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    
+    .muted {
+      color: var(--muted);
+    }
+    
+    /* ====== Floating WhatsApp Button ====== */
+    .whatsapp-fab {
+      position: fixed;
+      right: 25px;
+      bottom: 25px;
+      z-index: 120;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 28px;
+      color: #fff;
+      text-decoration: none;
+      background: linear-gradient(135deg, var(--whatsapp), #129a46);
+      box-shadow: 0 20px 50px rgba(37,211,102,0.3);
+      transition: var(--transition);
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
+    }
+    
+    .whatsapp-fab:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 30px 80px rgba(37,211,102,0.4);
+      animation: none;
+    }
+    
+    .whatsapp-fab::after {
+      content: "";
+      position: absolute;
+      width: 150%;
+      height: 150%;
+      border-radius: 50%;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 30%);
+      opacity: 0.8;
+    }
+    
+    /* ====== Animations ====== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .fade-in-up {
+      animation: fadeInUp 0.8s ease-out forwards;
+      opacity: 0;
+    }
+    
+    .delay-1 {
+      animation-delay: 0.2s;
+    }
+    
+    .delay-2 {
+      animation-delay: 0.4s;
+    }
+    
+    .delay-3 {
+      animation-delay: 0.6s;
+    }
+    
+    /* ====== Responsive Design ====== */
+    @media (max-width: 768px) {
+      .nav-wrap {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      nav {
+        display: flex;
+        gap: 0.5rem;
+      }
+      
+      nav a {
+        margin-left: 0;
+      }
+      
+      .cta-row {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .feature-strip {
+        flex-direction: column;
+      }
+      
+      .footer-grid {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+      }
+    }
+    
+    /* ====== Accessibility ====== */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+    
+    /* Focus styles for accessibility */
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Particle VFX Background -->
+  <div class="particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+
+  <header id="header">
+    <div class="container nav-wrap">
+      <div class="brand">
+        <div class="logo">
+  <img src="Untitled design (1).png" alt="Radha Laabs Logo" />
+</div>
+
+        <div>
+          <div style="font-weight:900">Radha Laabs</div>
+          <div class="muted" style="font-size:.78rem">AI Powered Marketing Agency</div>
+        </div>
+      </div>
+      <nav aria-label="Primary navigation">
+        <a href="#home">Home</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact Us</a>
+        <a href="industry.html">Industries</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO / HOME -->
+    <section id="home" class="hero">
+      <div class="container hero-card fade-in-up" role="region" aria-label="Intro">
+        <div class="kicker fade-in-up delay-1">On-demand prompts • Instant WhatsApp delivery</div>
+        <h1 class="fade-in-up delay-2">Radha Laabs Premium AI Prompts</h1>
+        <p class="lead fade-in-up delay-2">
+          Blog, copy, ads, code snippets, image prompts make or buy. We create tailored prompts that increase traffic, conversions, and speed.
+        </p>
+
+        <div class="cta-row fade-in-up delay-3">
+          <!-- WhatsApp link uses number and prefilled text from :root variables -->
+          <a class="btn primary" href="https://wa.me/918511762699?text=Hello%20Krish%2C%20I%20Want%20to%20Buy%20Prompts.%20Please%20tell%20me%20the%20Plans." target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+            Order on WhatsApp
+          </a>
+          <a class="btn ghost" href="#about">See our Prompts</a>
+        </div>
+
+        <!-- quick feature strip -->
+        <div class="feature-strip fade-in-up delay-3">
+          <div class="feature-item">
+            <div class="title">Instant Delivery</div>
+            <div class="subtitle">Delivered instantly on WhatsApp</div>
+          </div>
+          <div class="feature-item">
+            <div class="title">Generate Customize Prompt</div>
+            <div class="subtitle">Customize Prompt Crafting for Business</div>
+          </div>
+          <div class="feature-item">
+            <div class="title">Pay-Per-Prompt</div>
+            <div class="subtitle">Clear pricing for each prompt Packs</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="container features" aria-labelledby="about-title">
+      <h2 id="about-title" class="section-title fade-in-up">About Us</h2>
+      <p class="section-subtitle fade-in-up delay-1">Radha Laabs delivers high-impact prompts in glacial waters for creators, marketers, developers, and agencies. We design prompts with business outcomes in mind: higher CTRs, better copy, faster ideation.</p>
+
+      <div class="grid">
+        <article class="feature fade-in-up delay-1">
+          <div style="font-size:.92rem; color:var(--muted); font-weight:700">Niche-Ready Prompts</div>
+          <div class="title">SEO Blogs • Ads • Social Hooks</div>
+          <p>Tested templates for every niche and you just enter the variables, prompt is ready.</p>
+        </article>
+
+        <article class="feature fade-in-up delay-2">
+          <div style="font-size:.92rem; color:var(--muted); font-weight:700">Developer Prompts</div>
+          <div class="title">Code Snippets • API Requests</div>
+          <p>Structured prompts for complex tasks like debugging, refactoring, and code generation.</p>
+        </article>
+
+        <article class="feature fade-in-up delay-3">
+          <div style="font-size:.92rem; color:var(--muted); font-weight:700">Creative & Visual</div>
+          <div class="title">Image Prompts • Art Direction</div>
+          <p>High-detail prompts for image models: style, mood, lighting, camera settings included.</p>
+        </article>
+      </div>
+
+      <!-- pricing -->
+      <div style="margin-top:3rem">
+        <h3 class="section-title fade-in-up">Premium Pricing</h3>
+        <div class="pricing">
+          <div class="price-card fade-in-up delay-1">
+            <div style="display:flex; align-items:center; justify-content:space-between">
+              <div><strong>Starter</strong><div class="muted">5 Prompt</div></div>
+              <div class="price">₹299</div>
+            </div>
+            <p class="muted" style="margin-top:.8rem">- 4 Custom Prompts <br>
+                                                      - 1 Premium Image Prompt <br> 
+                                                      - 1 Revision</p>
+            <div style="margin-top:1.5rem"><a class="btn ghost" href="https://wa.me/918511762699?text=Hii%20Radha%20Laabs%2C%20I%20Want%20this%20Starter%20Plan.">Order on WhatsApp</a></div>
+          </div>
+
+          <div class="price-card fade-in-up delay-2">
+            <div style="display:flex; align-items:center; justify-content:space-between">
+              <div><strong>Pro</strong><div class="muted">10 Prompts</div></div>
+              <div class="price">₹999</div>
+            </div>
+            <p class="muted" style="margin-top:.8rem">- 7 Custom Prompts <br>
+                                                      - 3 Premium Image Prompt <br>
+                                                      - Use cases <br>
+                                                      - 3 Revision <br></p>
+            <div style="margin-top:1.5rem"><a class="btn ghost" href="https://wa.me/918511762699?text=Hii%20Radha%20Laabs%2C%20I%20Want%20this%20Pro%20Plan.">Order on WhatsApp</a></div>
+          </div>
+
+          <div class="price-card fade-in-up delay-3">
+            <div style="display:flex; align-items:center; justify-content:space-between">
+              <div><strong>Studio <br>(Monthly Plan)<br></strong><div class="muted">50 Prompts</div></div>
+              <div class="price">₹4,999</div>
+            </div>
+            <p class="muted" style="margin-top:.8rem"><br><br>-  40 Custom Prompts <br>
+                                                      -  Team Training <br>
+                                                      -  Use cases <br>
+                                                      -  Unlimited Revision <br>
+                                                      -  Premium Prompt Tuning <br>
+                                                      -  10 Premium Image Prompt <br>
+                                                      -  Quality Prompt Tuning</p>
+            <div style="margin-top:1.5rem"><a class="btn ghost" href="https://wa.me/918511762699?text=Hii%20Radha%20Laabs%2C%20I%20Want%20this%20Stdio%20Plan.">Order on WhatsApp</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <h2 id="contact-title" class="section-title fade-in-up">Contact Us</h2>
+        <p class="section-subtitle fade-in-up delay-1">Fastest response is on WhatsApp - or send the form here.</p>
+<br><br>
+        <form class="card-form fade-in-up delay-2" action="#" onsubmit="return false;" aria-label="Contact form (static)">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" placeholder="Your name" />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" placeholder="you@example.com" />
+          </div>
+          
+
+          <div style="display:flex; gap:0.8rem; align-items:center; margin-top:1.5rem; flex-wrap:wrap">
+            <button class="btn primary" type="button" onclick="location.href='https://wa.me/918511762699?text=Hello%20Krish%2C%20I%20Want%20to%20Buy%20Prompts.%20Please%20tell%20me%20the%20Plans.'">
+              Order instantly via WhatsApp
+            </button>
+            
+            <div class="muted" style="margin-left:auto">Reply time: usually within 24 hours</div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div style="font-weight:800">Radha Laabs</div>
+        <div class="muted" style="font-size:.95rem">High-impact prompts • Delivered on WhatsApp</div>
+      </div>
+      <div class="muted" style="text-align:right">
+        <div>📞 +91 85117 62699</div>
+        <div>✉️ krishvaghasiya12of@gmail.com</div>
+        <div>📍Surat, India</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp button (encoded message) -->
+  <a class="whatsapp-fab" href="https://wa.me/918511762699?text=Hello%20Krish%2C%20I%20Want%20to%20Buy%20Prompts.%20Please%20tell%20me%20the%20Plans." target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20.523 3.478A11.874 11.874 0 0012 .5C5.649.5.999 5.15.999 11.5c0 2.02.53 3.89 1.452 5.56L.5 23.5l6.62-1.928A11.88 11.88 0 0012 23.5c6.351 0 11.001-4.65 11.001-11 0-1.98-.53-3.84-1.478-5.522zM12 21.5a9.5 9.5 0 01-4.62-1.15l-.33-.2-3.94 1.146 1.132-3.84-.205-.33A9.5 9.5 0 1112 21.5z" fill="#fff"/>
+      <path d="M17.352 14.473c-.27-.135-1.6-.79-1.847-.88-.248-.091-.428-.135-.607.135-.18.27-.69.88-.85 1.06-.155.18-.31.202-.58.067-.27-.135-1.14-.42-2.17-1.33-.803-.716-1.345-1.6-1.503-1.87-.158-.27-.017-.415.12-.55.12-.12.27-.31.405-.465.135-.155.18-.27.27-.45.09-.18.045-.34-.022-.47-.067-.135-.607-1.45-.83-1.99-.218-.52-.44-.45-.607-.46l-.52-.01c-.18 0-.47.067-.72.33-.248.27-.95.93-.95 2.27s.973 2.63 1.108 2.81c.135.18 1.91 2.91 4.63 4.08 1.258.55 2.05.88 2.75 1.126.366.135.7.114.963.069.293-.05.9-.368 1.027-.723.12-.356.12-.66.084-.724-.035-.067-.127-.108-.296-.243z" fill="#fff"/>
+    </svg>
+  </a>
+
+  <script>
+    // Add scroll effect to header
+    window.addEventListener('scroll', function() {
+      const header = document.getElementById('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+    
+    // Intersection Observer for animations
+    document.addEventListener('DOMContentLoaded', function() {
+      const animatedElements = document.querySelectorAll('.fade-in-up');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+      
+      animatedElements.forEach(element => {
+        observer.observe(element);
+      });
+      
+      // Create more particles dynamically for better VFX
+      const particlesContainer = document.querySelector('.particles');
+      for (let i = 0; i < 10; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Random properties
+        const size = Math.random() * 20 + 5;
+        const top = Math.random() * 100;
+        const left = Math.random() * 100;
+        const duration = Math.random() * 20 + 15;
+        const delay = Math.random() * 10;
+        
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.top = `${top}%`;
+        particle.style.left = `${left}%`;
+        particle.style.animationDuration = `${duration}s`;
+        particle.style.animationDelay = `${delay}s`;
+        
+        particlesContainer.appendChild(particle);
+      }
+    });
+  </script>
+</body>
+</html>
